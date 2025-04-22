@@ -225,7 +225,13 @@ class DetailPage extends StatelessWidget {
                         height: 50,
                         width: MediaQuery.of(context).size.width - (2 * edge),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            openUrl(
+                              Uri.parse(
+                                'https://wa.me/6281212345678?text=Halo%20saya%20mau%20booking%20kamar',
+                              ),
+                            );
+                          },
                           style: TextButton.styleFrom(
                             backgroundColor: purpleColor,
                             shape: RoundedRectangleBorder(
