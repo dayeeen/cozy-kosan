@@ -18,9 +18,10 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         bottom: false,
         child: Padding(
-          padding: EdgeInsets.all(edge),
+          padding: EdgeInsets.symmetric(horizontal: edge),
           child: ListView(
             children: [
+              SizedBox(height: 30),
               // Header
               Text(
                 'Explore Now',
@@ -150,6 +151,7 @@ class HomePage extends StatelessWidget {
                   SizedBox(height: 20),
                 ],
               ),
+              SizedBox(height: 50 + edge),
             ],
           ),
         ),
