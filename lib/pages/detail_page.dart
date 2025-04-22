@@ -1,12 +1,17 @@
 import 'package:bwa_cozy/theme.dart';
 import 'package:bwa_cozy/widgets/facility_item.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    openUrl(Uri url) async {
+      if (!await launchUrl(url)) throw 'Could not launch $url';
+    }
+
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
@@ -20,7 +25,7 @@ class DetailPage extends StatelessWidget {
               height: 350,
               fit: BoxFit.cover,
             ),
-            
+
             ListView(
               children: [
                 SizedBox(height: 328),
@@ -189,22 +194,26 @@ class DetailPage extends StatelessWidget {
                       ),
                       SizedBox(height: 6),
                       Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: edge,
-                        ),
+                        padding: EdgeInsets.symmetric(horizontal: edge),
                         child: Row(
                           children: [
                             Text(
-                              'Jln. Suroyo No. 161\nSurabaya',
-                              style: greyTextStyle.copyWith(
-                                fontSize: 14,
-                              ),
+                              'Jln. Bangka Raya No. 7 A\nJakarta Selatan',
+                              style: greyTextStyle.copyWith(fontSize: 14),
                             ),
                             Spacer(),
-                            Image.asset(
-                              'assets/btn_map.png',
-                              width: 40,
-                              height: 40,
+                            InkWell(
+                              onTap:
+                                  () => openUrl(
+                                    Uri.parse(
+                                      'https://maps.app.goo.gl/tM8N2STdRUGPdvWx7',
+                                    ),
+                                  ),
+                              child: Image.asset(
+                                'assets/btn_map.png',
+                                width: 40,
+                                height: 40,
+                              ),
                             ),
                           ],
                         ),
@@ -212,9 +221,7 @@ class DetailPage extends StatelessWidget {
                       SizedBox(height: 40),
                       // Booking Button
                       Container(
-                        margin: EdgeInsets.symmetric(
-                          horizontal: edge,
-                        ),
+                        margin: EdgeInsets.symmetric(horizontal: edge),
                         height: 50,
                         width: MediaQuery.of(context).size.width - (2 * edge),
                         child: ElevatedButton(
@@ -227,9 +234,7 @@ class DetailPage extends StatelessWidget {
                           ),
                           child: Text(
                             'Book Now',
-                            style: whiteTextStyle.copyWith(
-                              fontSize: 16,
-                            ),
+                            style: whiteTextStyle.copyWith(fontSize: 16),
                           ),
                         ),
                       ),
@@ -253,7 +258,6 @@ class DetailPage extends StatelessWidget {
               ),
             ),
           ],
-          
         ),
       ),
     );
