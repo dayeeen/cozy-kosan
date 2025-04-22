@@ -4,7 +4,7 @@ class Space {
   String imageUrl;
   String city;
   String country;
-  double price;
+  int price;
   int rating;
 
   Space({
