@@ -1,3 +1,4 @@
+import 'package:bwa_cozy/pages/error_page.dart';
 import 'package:bwa_cozy/theme.dart';
 import 'package:bwa_cozy/widgets/facility_item.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,14 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     openUrl(Uri url) async {
-      if (!await launchUrl(url)) throw 'Could not launch $url';
+      if (!await launchUrl(url)){
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ErrorPage()
+          ),
+        );
+      } 
     }
 
     return Scaffold(
